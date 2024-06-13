@@ -38,7 +38,6 @@ export const login = async (req, res) => {
                 error: "invalid-email-or-password"
             })
         }
-        user.isAdmin = isAdmin
         user.save()
         const userData = await loginService(user)
         res.cookie('refreshToken', userData.refreshToken, {
