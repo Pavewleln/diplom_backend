@@ -10,6 +10,7 @@ import cookieParser from 'cookie-parser'
 import AuthRoute from './routes/auth.js'
 import ProductRoute from './routes/product.js'
 import CommentRoute from './routes/comment.js'
+import TechRoute from './routes/tech.js'
 
 
 const app = express()
@@ -39,14 +40,13 @@ app.post('/upload', upload.single('images'), (req, res) => {
 app.use('/auth', AuthRoute)
 app.use('/products', ProductRoute)
 app.use('/comments', CommentRoute)
-
-
+app.use('/tech', TechRoute)
 
 mongoose
     .connect(process.env.MONGO_DB_URL)
     .then(() => {
         console.log("\nDB ok")
-        app.listen(port, (err) => {
+        app.listen(port, async (err) => {
             if (err) console.log(err)
             console.log(`\nServer has been started!\nURL: http://localhost:${port}`)
         })

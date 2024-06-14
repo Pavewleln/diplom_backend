@@ -30,7 +30,11 @@ const ProductSchema = new Schema({
     type: {
         type: String,
         required: true
-    }
+    },
+    techProcesses: [{
+        type: String,
+        required: true
+    }]
 }, {
     timestamps: true
 })
